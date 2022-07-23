@@ -4,6 +4,9 @@
     <test verbose="2" preserve-order="true" name="Command Line Tests" >
         <classes>
             <class name="tests.PrimerTest"></class>
+            <class name="tests.SegundoTest"></class>
+            <class name="tests.TercerTest"></class>
+            <class name="tests.CuartoTest"></class>
         </classes>
     </test>
 </suite>
