@@ -1,21 +1,20 @@
 # Readme del proyecto Prueba técnica
 
-**Table of Contents**
 
-[TOCM]
+# Instrucciones para ejecutar las pruebas
 
-[TOC]
+## PASO 1:
 
-#Instrucciones para ejecutar las pruebas
-##PASO 1: 
 Abrir una línea de comandos e ingresar a la ruta del repositorio
-##PASO 2: 
+
+## PASO 2:
+
 Ejecutar el set de pruebas con el siguiente comando:
 
 `$ mvn clean test `
 
 
-#Estructura del proyecto
+# Estructura del proyecto
 La estructura del proyecto se encuentra de la siguiente forma:
 
 - `src/test/java/requests`
