@@ -8,6 +8,8 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import requests.SegundoTestRequest;
+import utils.ServiceUtil;
 
 public class SegundoTest {
 
@@ -21,25 +23,16 @@ public class SegundoTest {
 	public void segundo_test() {
 		System.out.println("Segundo test");
 		
-		RequestSpecBuilder builder = new RequestSpecBuilder();
-		builder.setBaseUri("http://app.fakejson.com/q");
-		builder.setContentType("application/json");
 		
-		RequestSpecification request = RestAssured.given().spec(builder.build());
-		JSONObject payload = new JSONObject();
-		JSONObject data = new JSONObject();
-		payload.put("token", "najUNRCsa5esJdvlYTtL6g");
-		data.put("correo", "mauricio.quiroz@tsoflatam.com");
-		payload.put("data",data);
-		request.body(payload);
-		Response response = request.patch();
+		SegundoTestRequest request = new SegundoTestRequest("http://app.fakejson.com", "/q", "patch", "najUNRCsa5esJdvlYTtL6g");
+		request.setCorreo("mauricio.quiroz@tsoftlatam.com");
+		JSONObject payload = request.getJSON();
 		
-		System.out.println("Status code: " + response.getStatusCode());
-		response.prettyPrint();
+		Response response = ServiceUtil.callService(request);
 		
 		Assert.assertNotNull(response.getStatusCode(), "El status code no puede ser nullo");
 		Assert.assertEquals(response.getStatusCode(),200, "Fallo la validacion de status code");
-		Assert.assertEquals(response.jsonPath().get("correo"), data.get("correo"), "El correo es distinto al que se envio a actualizar");	
+		Assert.assertEquals(response.jsonPath().get("correo"), request.getCorreo(), "El correo es distinto al que se envio a actualizar");	
 	}
 	
 }
