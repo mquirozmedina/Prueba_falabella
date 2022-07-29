@@ -13,8 +13,10 @@ public class ServiceUtil {
 		builder.setBaseUri(baseRequest.getUrl() + baseRequest.getPath());
 		builder.setContentType("application/json");
 		RequestSpecification request = RestAssured.given().spec(builder.build());
-		
-		request.body(baseRequest.getJSON());
+		baseRequest.getQueryParams().forEach((k,v) -> request.queryParam(k, v));
+		if(baseRequest.getJSON() != null)
+			request.body(baseRequest.getJSON());
+		request.log().all();
 		Response response = null;
 		switch(baseRequest.getMethod().toLowerCase()) {
 			case "post":

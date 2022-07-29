@@ -7,6 +7,7 @@
             <class name="tests.SegundoTest"></class>
             <class name="tests.TercerTest"></class>
             <class name="tests.CuartoTest"></class>
+            <class name="tests.QuintoTest"></class>
         </classes>
     </test>
 </suite>
